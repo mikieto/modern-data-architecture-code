@@ -1,0 +1,28 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE/Editor specific
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Terraform state/plan files (if using local state)
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars # If it contains secrets
+*.tfplan
+
+# Docker / Environment Files
+.env # VERY IMPORTANT - Do not commit secrets!
+
+# Airflow / Other Tools
+airflow-logs/
+logs/
+*.db # e.g., local sqlite

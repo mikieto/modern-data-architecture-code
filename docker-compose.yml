@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  workspace:
+    # Build the image from the Dockerfile in the current directory (.)
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Service name (can be used for inter-container communication if needed later)
+    container_name: mda_workspace
+    # Set the working directory inside the container
+    working_dir: /work
+    # Keep the container running even when no command is specified (interactive use)
+    tty: true
+    stdin_open: true
+    # Mount volumes:
+    volumes:
+      # Mount the entire repository root directory to /work inside the container
+      # This allows you to edit code on your host and see changes in the container
+      - .:/work
+      # --- ~/.aws volume mount is REMOVED ---
+      # We primarily rely on environment variables loaded from .env for AWS credentials
+      # to provide a more consistent setup across users.
+    # Load environment variables from a .env file in the project root
+    # Ensure you create a .env file from .env.example and fill it!
+    env_file:
+      - .env
+    # Keep the container running indefinitely
+    # The CMD in Dockerfile ("sleep infinity") also helps achieve this
+    command: sleep infinity
+
+# Optional: Define networks or volumes if needed for multi-container setups later
+# networks:
+#   data_network:
+# volumes:
+#   kafka_data:
