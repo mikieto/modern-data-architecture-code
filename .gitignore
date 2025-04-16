@@ -1,3 +1,5 @@
+build/
+
 # Python virtual environment
 .venv/
 __pycache__/
@@ -16,11 +18,11 @@ Thumbs.db
 *.tfstate
 *.tfstate.*
 .terraform/
-terraform.tfvars # If it contains secrets
+terraform.tfvars
 *.tfplan
 
 # Docker / Environment Files
-.env # VERY IMPORTANT - Do not commit secrets!
+.env
 
 # Airflow / Other Tools
 airflow-logs/
